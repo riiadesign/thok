@@ -23,6 +23,7 @@
 #define PPASTE  LCTL(LSFT(KC_V))
 #define REDO    LCTL(LSFT(KC_Z))
 #define UNDO    LCTL(KC_Z)
+#define RGB_WHI rgblight_sethsv(rgblight_get_hue(), 0, rgblight_get_val())
 
 // Adobe Shortcuts - Mac
 // #define COPY     LGUI(KC_C)
@@ -63,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [4] = LAYOUT(
                         TO(5),
-    _______,  _______,  _______,
+    RGB_M_B,  RGB_WHI,  _______,
     _______,  _______,  _______,
     _______,  _______,  _______
   ),
