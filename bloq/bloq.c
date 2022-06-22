@@ -70,6 +70,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     show_label = true;
   }
 
+  // Toggle white or color (Layer 4, Middle Top)
+  if (get_highest_layer(layer_state | default_layer_state) == 4 && key_state[2] == 1) {
+    if (rgb_matrix_get_sat() == 255) {
+      rgb_matrix_sethsv(rgb_matrix_get_hue(), 0, rgb_matrix_get_val());
+    } else {
+      rgb_matrix_sethsv(rgb_matrix_get_hue(), 255, rgb_matrix_get_val());
+    }
+  }
+
+  // Skip startup if keypress
+  if (startup) {
+    startup = false;
+    oled_clear();
+  }
+
   return true;
 }
 

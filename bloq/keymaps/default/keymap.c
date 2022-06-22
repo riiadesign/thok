@@ -16,6 +16,10 @@
 
 #include QMK_KEYBOARD_H
 
+enum layers {
+  _RESET = 6
+};
+
 // Adobe Shortcuts - Windows
 #define COPY    LCTL(KC_C)
 #define CUT     LCTL(KC_X)
@@ -23,7 +27,7 @@
 #define PPASTE  LCTL(LSFT(KC_V))
 #define REDO    LCTL(LSFT(KC_Z))
 #define UNDO    LCTL(KC_Z)
-#define RGB_WHI rgblight_sethsv(rgblight_get_hue(), 0, rgblight_get_val())
+#define RGB_WHI XXXXXXX // Filler for key white toggle, see bloq.c to modify
 
 // Adobe Shortcuts - Mac
 // #define COPY     LGUI(KC_C)
@@ -46,38 +50,38 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT(
                         TO(2),
-    RGB_MOD,  _______,  _______,
-    _______,  KC_UP,    _______,
+    RGB_MOD,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  KC_UP,    XXXXXXX,
     KC_LEFT,  KC_DOWN,  KC_RGHT
   ),
   [2] = LAYOUT(
                         TO(3),
     KC_MUTE,  KC_MPLY,  KC_MSTP,
     KC_VOLU,  KC_MPRV,  KC_MNXT,
-    KC_VOLD,  _______,  _______
+    KC_VOLD,  XXXXXXX,  XXXXXXX
   ),
   [3] = LAYOUT(
                         TO(4),
     UNDO,     REDO,     KC_DEL,
     COPY,     CUT,      PASTE,
-    PPASTE,   KC_SPC,   _______
+    PPASTE,   KC_SPC,   XXXXXXX
   ),
   [4] = LAYOUT(
                         TO(5),
-    RGB_M_B,  RGB_WHI,  _______,
-    _______,  _______,  _______,
-    _______,  _______,  _______
+    RGB_M_B,  RGB_WHI,  XXXXXXX,
+    RGB_M_P,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  RGB_VAD,  RGB_VAI
   ),
   [5] = LAYOUT(
                         TO(1),
-    _______,  _______,  _______,
-    _______,  _______,  _______,
-    _______,  _______,  _______
+    XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,MO(_RESET), XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
-  [RESET] = LAYOUT (
+  [_RESET] = LAYOUT (
                         RESET,
-    _______,  _______,  _______,
-    _______,  _______,  _______,
-    _______,  _______,  _______
+    XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX
   ),
 };
